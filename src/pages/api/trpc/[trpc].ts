@@ -1,7 +1,7 @@
-import { appRouter } from "@/server";
 import type { HTTPHeaders } from "@trpc/client";
 import { resolveHTTPResponse } from "@trpc/server/http";
 import type { APIContext } from "astro";
+import { appRouter } from "../../../server";
 
 async function httpHandler({ request, params }: APIContext): Promise<Response> {
   const query = new URL(request.url).searchParams;

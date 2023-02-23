@@ -1,10 +1,44 @@
 ---
-import MainLayout from "@/layouts/MainLayout.astro";
-import { trpc } from "@/utils";
-
-const data = await trpc.example.greeting.query({ name: "TRPC Astro" });
+import MainLayout from "../layouts/MainLayout.astro";
 ---
 
+<script>
+  import { trpc } from "../utils";
+
+  const input = document.getElementById("name") as HTMLInputElement;
+  const value = document.getElementById("greeting-value") as HTMLElement;
+  const form = document.getElementById("greeting-form") as HTMLFormElement;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const data = await trpc.example.greeting.query({
+      name: `Hello ${input.value}!`,
+    });
+    value.innerText = data;
+    input.value = "";
+  });
+</script>
+
 <MainLayout>
-  <div>{data}</div>
+  <div class="flex items-center justify-center min-h-screen">
+    <div class="flex flex-col gap-4 w-20em">
+      <p class="text-center text-2xl font-800" id="greeting-value">
+        Please enter your name!
+      </p>
+      <form class="flex flex-col gap-4" id="greeting-form">
+        <input
+          type="text"
+          id="name"
+          placeholder="name"
+          class="p-2 w-full ring ring-gray-3 rounded-md"
+        />
+        <button
+          type="submit"
+          class="font-500 p-2 w-full bg-dark-9 text-white rounded-md"
+          >Submit</button
+        >
+      </form>
+    </div>
+  </div>
 </MainLayout>

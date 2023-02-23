@@ -9,6 +9,6 @@ export default router({
       })
     )
     .query(({ input }) => {
-      return `Hello ${input.name}`;
+      return input.name;
     }),
 });
