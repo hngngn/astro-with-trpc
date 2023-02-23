@@ -1,7 +1,7 @@
 import type { HTTPHeaders } from "@trpc/client";
 import { resolveHTTPResponse } from "@trpc/server/http";
 import type { APIContext } from "astro";
-import { appRouter } from "../../../server";
+import { appRouter } from "../../server";
 
 async function httpHandler({ request, params }: APIContext): Promise<Response> {
   const query = new URL(request.url).searchParams;
@@ -13,7 +13,7 @@ async function httpHandler({ request, params }: APIContext): Promise<Response> {
       return {};
     },
     router: appRouter,
-    path: params.trpc as string,
+    path: params.api as string,
     req: {
       query,
       method: request.method,
