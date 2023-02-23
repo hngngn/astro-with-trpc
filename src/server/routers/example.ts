@@ -8,7 +8,7 @@ export default router({
         name: z.string(),
       })
     )
-    .query(({ input }) => {
+    .mutation(({ input }) => {
       return input.name;
     }),
 });
