@@ -24,7 +24,10 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "browserslist": "^4.21.5",
+    "lightningcss": "^1.20.0",
     "prisma": "^4.14.0",
-    "unocss": "^0.51.12"
+    "unocss": "^0.51.12",
+    "unocss-preset-autoprefixer": "^0.0.5"
   }
 }
