@@ -1,14 +1,10 @@
-import { z } from "zod";
-import { procedure, router } from "../init";
+import { privateProcedure, publicProcedure, router } from "../init"
 
 export default router({
-  greeting: procedure
-    .input(
-      z.object({
-        name: z.string(),
-      })
-    )
-    .mutation(({ input }) => {
-      return input.name;
+    public: publicProcedure.query(() => {
+        return "Hello from server!"
     }),
-});
+    private: privateProcedure.query(({ ctx }) => {
+        return `Hello ${ctx.user?.name}`
+    }),
+})

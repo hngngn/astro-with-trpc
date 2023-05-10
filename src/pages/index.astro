@@ -1,33 +1,50 @@
 ---
+import type { Session } from "@auth/core/types"
+import { Auth, SignIn, SignOut } from "auth-astro/components"
 import MainLayout from "../layouts/MainLayout.astro"
 ---
 
 <script>
     import { trpc } from "../utils"
 
-    const input = document.getElementById("name") as HTMLInputElement
-    const value = document.getElementById("greeting-value") as HTMLElement
-    const form = document.getElementById("greeting-form") as HTMLFormElement
+    const publicValue = document.getElementById("public-greeting-value") as HTMLElement
+    const privateValue = document.getElementById("private-greeting-value") as HTMLElement
 
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault()
-
-        const data = await trpc.example.greeting.mutate({
-            name: `Hello ${input.value}!`,
-        })
-        value.innerText = data
-        input.value = ""
-    })
+    try {
+        const dataPrivate = await trpc.example.private.query()
+        privateValue.innerHTML = dataPrivate
+    } catch (error) {
+        const dataPublic = await trpc.example.public.query()
+        publicValue.innerText = dataPublic
+    }
 </script>
 
 <MainLayout>
     <div class="flex items-center justify-center min-h-screen">
-        <div class="flex flex-col gap-4 w-20em">
-            <p class="text-center text-2xl font-800" id="greeting-value">Please enter your name!</p>
-            <form class="flex flex-col gap-4" id="greeting-form">
-                <input type="text" id="name" placeholder="name" class="p-2 w-full ring ring-gray-3 rounded-md" />
-                <button type="submit" class="font-500 p-2 w-full bg-dark-9 text-white rounded-md">Submit</button>
-            </form>
+        <div class="w-15em">
+            <Auth>
+                {
+                    (session: Session) =>
+                        !session ? (
+                            <div class="space-y-4">
+                                <p class="text-center text-xl font-600" id="public-greeting-value" />
+                                <SignIn
+                                    provider="github"
+                                    class="outline-none p-2 rounded-md font-500 w-full bg-dark text-white"
+                                >
+                                    Log in with Github
+                                </SignIn>
+                            </div>
+                        ) : (
+                            <div class="space-y-4">
+                                <p class="text-center text-xl font-600" id="private-greeting-value" />
+                                <SignOut class="outline-none p-2 rounded-md font-500 w-full bg-dark text-white">
+                                    Log out
+                                </SignOut>
+                            </div>
+                        )
+                }
+            </Auth>
         </div>
     </div>
 </MainLayout>
