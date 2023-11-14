@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@astrojs/vercel':
     specifier: ^3.3.0
@@ -47,7 +51,7 @@ devDependencies:
     version: 4.14.0
   unocss:
     specifier: ^0.51.12
-    version: 0.51.12(postcss@8.4.23)(vite@4.3.5)
+    version: 0.51.12(postcss@8.4.31)(vite@4.3.5)
   unocss-preset-autoprefixer:
     specifier: ^0.0.5
     version: 0.0.5(browserslist@4.21.5)(lightningcss@1.20.0)(unocss@0.51.12)
@@ -1016,7 +1020,7 @@ packages:
       sirv: 2.0.3
     dev: true
 
-  /@unocss/postcss@0.51.12(postcss@8.4.23):
+  /@unocss/postcss@0.51.12(postcss@8.4.31):
     resolution: {integrity: sha512-d/EIwAOhnqcswZtq941GOJFwJj0rVyTQDqWa9YFH+9CkwmH92FcsBPEs8uEaQCyq7ZZEPgrg1UE2oa7Dn0fAxw==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -1027,7 +1031,7 @@ packages:
       css-tree: 2.3.1
       fast-glob: 3.2.12
       magic-string: 0.30.0
-      postcss: 8.4.23
+      postcss: 8.4.31
     dev: true
 
   /@unocss/preset-attributify@0.51.12:
@@ -3301,8 +3305,8 @@ packages:
       source-map-js: 1.0.2
     dev: false
 
-  /postcss@8.4.23:
-    resolution: {integrity: sha512-bQ3qMcpF6A/YjR55xtoTr0jGOlnPOKAIMdOWiv0EIT6HVPEaJiJB4NLljSbiHoC2RX7DN5Uvjtpbg1NPdwv1oA==}
+  /postcss@8.4.31:
+    resolution: {integrity: sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.6
@@ -4009,10 +4013,10 @@ packages:
     dependencies:
       browserslist: 4.21.5
       lightningcss: 1.20.0
-      unocss: 0.51.12(postcss@8.4.23)(vite@4.3.5)
+      unocss: 0.51.12(postcss@8.4.31)(vite@4.3.5)
     dev: true
 
-  /unocss@0.51.12(postcss@8.4.23)(vite@4.3.5):
+  /unocss@0.51.12(postcss@8.4.31)(vite@4.3.5):
     resolution: {integrity: sha512-TjCrFnRq73iU/pxMSMgeWsCm9VPTcg41KEvjZWKJMglROJC+cQ99A7/tiOlamf1Y+TpJxv06K/hUZp+34j8Fmw==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -4025,7 +4029,7 @@ packages:
       '@unocss/cli': 0.51.12
       '@unocss/core': 0.51.12
       '@unocss/extractor-arbitrary-variants': 0.51.12
-      '@unocss/postcss': 0.51.12(postcss@8.4.23)
+      '@unocss/postcss': 0.51.12(postcss@8.4.31)
       '@unocss/preset-attributify': 0.51.12
       '@unocss/preset-icons': 0.51.12
       '@unocss/preset-mini': 0.51.12
@@ -4132,7 +4136,7 @@ packages:
         optional: true
     dependencies:
       esbuild: 0.17.18
-      postcss: 8.4.23
+      postcss: 8.4.31
       rollup: 3.21.5
     optionalDependencies:
       fsevents: 2.3.2
